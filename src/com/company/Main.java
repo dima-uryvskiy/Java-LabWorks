@@ -1,12 +1,21 @@
 package com.company;
-import LabWork1.Lab1;
+import au.com.bytecode.opencsv.CSVReader;
+
+import java.io.IOException;
+import java.util.Arrays;
+
 
 public class Main
 {
-    public static void main(String[] args)
-    {
-        //System.out.println("Hello world!");
-        Lab1 q = new Lab1();
-
+    public static void main(String[] args) throws IOException {
+        CSVReader reader = new CSVReader(new java.io.FileReader("LabWork1.csv"), ',', '"', 1);
+        String[] nextLine;
+        while ((nextLine = reader.readNext()) != null)
+        {
+            if (nextLine != null)
+            {
+                System.out.println(Arrays.toString(nextLine));
+            }
+        }
     }
 }
