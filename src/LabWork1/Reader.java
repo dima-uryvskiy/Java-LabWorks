@@ -11,12 +11,14 @@ public class Reader {
         return reader.readAll();
     }
 
+
     public static void PrintData(List<String[]> dataFile){
-        for (String[] i :dataFile)
+        for (String[] rows :dataFile)
         {
-            for (String j :i)
-                System.out.print(j + " ");
+            for (String  element :rows)
+                System.out.print(element + " ");
             System.out.print("\n");
         }
+        System.out.print("\n");
     }
 }

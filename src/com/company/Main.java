@@ -13,6 +13,9 @@ public class Main
 
        List<String[]> result = Reader.ReadFile();
        Reader.PrintData(result);
+
+
+
        Chair test = new Chair("Chair", "Test", 50,60,70,"Red");
        test.LookInfo();
        Table table = new Table("Table", "Test1", 50,60,70,"Red");
