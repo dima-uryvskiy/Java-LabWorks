@@ -10,7 +10,7 @@ public class Table extends Furniture
     public void LookInfo()
     {
         System.out.println("Main Info Table:");
-        System.out.printf("Type: %s\nName %s\nWidth: %d\nHeight %d\nLength: %d\nColor %s\n",
+        System.out.printf("Type: %s\nName: %s\nWidth: %d\nHeight: %d\nLength: %d\nColor: %s\n",
                 type, name, width, height, length, color);
         System.out.print("\n");
     }
