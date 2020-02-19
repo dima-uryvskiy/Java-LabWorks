@@ -1,20 +1,15 @@
 package com.company;
 
-import au.com.bytecode.opencsv.CSVReader;
+import LabWork1.Reader;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main
 {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        CSVReader reader = new CSVReader(new java.io.FileReader("./src/LabWork1/LabWork1.csv"), ',', '"', 0);
-        String nextLine = "";
-        ArrayList result = new ArrayList();
 
-        while ((nextLine =  Arrays.toString(reader.readNext())) != "null")
-           result.add(nextLine);
+        ArrayList result = Reader.ReadFile();
 
         for (Object i :result)
             System.out.println(i);
