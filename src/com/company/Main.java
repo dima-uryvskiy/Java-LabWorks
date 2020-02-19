@@ -1,8 +1,6 @@
 package com.company;
 
-import LabWork1.Chair;
-import LabWork1.Reader;
-import LabWork1.Table;
+import LabWork1.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,11 +11,18 @@ public class Main
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         List<String[]> result = Reader.ReadFile();
+        Reader.PrintData(result);
+
+        // Сериализация
+        Serialization.CreateFile(result);
+        // Десериализация
+        Reader.PrintData(Deserialization.CreateArray(result));  //  создание нового массива
+        Deserialization.CreateFile();
 
         ArrayList<Chair> chairs = new ArrayList<>();  // массив объектов
         ArrayList<Table> tables = new ArrayList<>();
 
-        for (String[] rows: result)
+        for (String[] rows: result)  // заполнение массивы объектами
         {
             if (rows[0].contains("chair"))
                 chairs.add(new Chair(rows[0], rows[1], Integer.parseInt(rows[2]),Integer.parseInt(rows[3]),
@@ -32,19 +37,5 @@ public class Main
 
         for (Table rows: tables)  // вывод столов
             rows.LookInfo();
-
-       /*
-        ObjectOutputStream oos = new ObjectOutputStream(
-                new FileOutputStream("LabWork1.ser")) ;
-        oos.writeObject(result);
-        oos.flush();
-
-
-        ObjectInputStream ois = new ObjectInputStream(
-                new FileInputStream("LabWork1.ser"));
-        ArrayList<String[]> newResult = (ArrayList<String[]>)ois.readObject();
-
-        Reader.PrintData(result);
-*/
     }
 }
