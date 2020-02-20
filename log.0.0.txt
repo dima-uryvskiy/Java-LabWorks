@@ -1,0 +1,36 @@
+февр. 20, 2020 5:11:48 PM com.company.Main main
+INFO: Start main and read csv file
+февр. 20, 2020 5:11:48 PM com.company.Main main
+INFO: Create array object
+февр. 20, 2020 5:11:48 PM com.company.Main main
+INFO: Add objects in array
+февр. 20, 2020 5:11:48 PM com.company.Main main
+INFO: Serialization
+февр. 20, 2020 5:11:48 PM com.company.Main main
+INFO: Deserialization
+февр. 20, 2020 5:13:51 PM com.company.Main main
+INFO: Start main and read csv file
+февр. 20, 2020 5:13:51 PM com.company.Main main
+INFO: Create array object
+февр. 20, 2020 5:13:51 PM com.company.Main main
+INFO: Add objects in array
+февр. 20, 2020 5:13:51 PM com.company.Main main
+INFO: Serialization
+февр. 20, 2020 5:13:51 PM com.company.Main main
+INFO: Deserialization
+февр. 20, 2020 5:13:51 PM com.company.Main main
+INFO: Print info Chair
+февр. 20, 2020 5:13:51 PM com.company.Main main
+INFO: Print info Table
+февр. 20, 2020 5:31:35 PM com.company.Main main
+INFO: Start main and read csv file
+февр. 20, 2020 5:31:35 PM com.company.Main main
+INFO: Create array object
+февр. 20, 2020 5:31:35 PM com.company.Main main
+INFO: Add objects in array
+февр. 20, 2020 5:31:35 PM com.company.Main main
+INFO: Serialization
+февр. 20, 2020 5:31:35 PM com.company.Main main
+INFO: Deserialization
+февр. 20, 2020 5:31:35 PM com.company.Main main
+INFO: Print info Chair
