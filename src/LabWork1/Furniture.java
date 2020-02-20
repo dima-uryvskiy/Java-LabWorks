@@ -21,5 +21,11 @@ public abstract class Furniture implements Serializable
         this.color = color;
     }
 
-    protected abstract void LookInfo();
+    public void LookInfo()
+    {
+        System.out.println("Main Info:");
+        System.out.printf("Type: %s\nName: %s\nWidth: %d\nHeight: %d\nLength: %d\nColor: %s\n",
+                type, name, width, height, length, color);
+        System.out.print("\n");
+    }
 }
