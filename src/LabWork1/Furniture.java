@@ -2,7 +2,7 @@ package LabWork1;
 
 import java.io.Serializable;
 
-abstract class Furniture implements Serializable
+public abstract class Furniture implements Serializable
 {
     protected String type;
     protected String name;

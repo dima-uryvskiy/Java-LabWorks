@@ -28,30 +28,23 @@ public class Main
         List<String[]> result = Reader.ReadFile();
         Reader.PrintData(result);
         LOGGER.log(Level.INFO,"Create array object");
-        ArrayList<Chair> chairs = new ArrayList<>();  // массив объектов
-        ArrayList<Table> tables = new ArrayList<>();
+        ArrayList<Furniture> furniture = new ArrayList<>();
         LOGGER.log(Level.INFO,"Add objects in array");
         for (String[] rows: result)  // заполнение массивы объектами
         {
             if (rows[0].contains("chair"))
-                chairs.add(new Chair(rows[0], rows[1], Integer.parseInt(rows[2]),Integer.parseInt(rows[3]),
+                furniture.add(new Chair(rows[0], rows[1], Integer.parseInt(rows[2]),Integer.parseInt(rows[3]),
                         Integer.parseInt(rows[4]),rows[5]));
             if (rows[0].contains("table"))
-                tables.add(new Table(rows[0], rows[1], Integer.parseInt(rows[2]),Integer.parseInt(rows[3]),
+                furniture.add(new Table(rows[0], rows[1], Integer.parseInt(rows[2]),Integer.parseInt(rows[3]),
                         Integer.parseInt(rows[4]),rows[5]));
         }
         LOGGER.log(Level.INFO,"Serialization");
-        Serialization.CreateFileChair(chairs);
-        Serialization.CreateFileTable(tables);
+        Serialization.CreateFile(furniture);
         LOGGER.log(Level.INFO,"Deserialization");
-        Deserialization.CreateArrayChair();
-        Deserialization.CreateArrayTable();
+        Deserialization.CreateArray();
 
         LOGGER.log(Level.INFO,"Print info Chair");
-        for (Chair rows: chairs)  // вывод стульев
-            rows.LookInfo();
-        LOGGER.log(Level.INFO,"Print info Table");
-        for (Table rows: tables)  // вывод столов
-            rows.LookInfo();
+
     }
 }
