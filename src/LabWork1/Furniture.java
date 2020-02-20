@@ -1,6 +1,8 @@
 package LabWork1;
 
-abstract class Furniture
+import java.io.Serializable;
+
+abstract class Furniture implements Serializable
 {
     protected String type;
     protected String name;

@@ -13,12 +13,6 @@ public class Main
         List<String[]> result = Reader.ReadFile();
         Reader.PrintData(result);
 
-        // Сериализация
-        Serialization.CreateFile(result);
-        // Десериализация
-        Reader.PrintData(Deserialization.CreateArray(result));  //  создание нового массива
-        Deserialization.CreateFile();
-
         ArrayList<Chair> chairs = new ArrayList<>();  // массив объектов
         ArrayList<Table> tables = new ArrayList<>();
 
@@ -31,6 +25,11 @@ public class Main
                 tables.add(new Table(rows[0], rows[1], Integer.parseInt(rows[2]),Integer.parseInt(rows[3]),
                         Integer.parseInt(rows[4]),rows[5]));
         }
+
+        // Сериализация
+        Serialization.CreateFile(chairs);
+        // Десериализация
+        Deserialization.CreateArray(chairs);  //  создание нового массива
 
         for (Chair rows: chairs)  // вывод стульев
             rows.LookInfo();
