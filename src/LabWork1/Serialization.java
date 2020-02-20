@@ -7,9 +7,16 @@ import java.util.ArrayList;
 
 public class Serialization {
 
-    public static void CreateFile(ArrayList<Chair> dataFile) throws IOException {
+    public static void CreateFileChair(ArrayList<Chair> dataFile) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(
-                new FileOutputStream("./src/LabWork1/SerLabWork1.ser")) ;
+                new FileOutputStream("./src/LabWork1/SerChairLabWork1.ser"));
+        oos.writeObject(dataFile);
+        oos.flush();
+    }
+
+    public static void CreateFileTable(ArrayList<Table> dataFile) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream("./src/LabWork1/SerTableLabWork1.ser"));
         oos.writeObject(dataFile);
         oos.flush();
     }
