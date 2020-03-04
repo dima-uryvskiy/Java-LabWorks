@@ -88,11 +88,11 @@ public class Main extends Application{
             }
         });
 
-        for (Furniture temp: table.getItems())
-        {
-
-            System.out.println(temp.returnArray());
+        for (Furniture objects: table.getItems()) {
+            String [] arrayTable = objects.returnArray();
         }
+
+
 
         FlowPane root = new FlowPane(Orientation.HORIZONTAL, 10, 15, labelField, fieldInput, labelValue, valueInput, btn, table);
         root.setAlignment(Pos.CENTER);
