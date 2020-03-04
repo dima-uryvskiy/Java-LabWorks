@@ -2,6 +2,8 @@ package sample;
 
 import javafx.beans.property.*;
 
+import java.util.List;
+
 public class Furniture {
 
     private SimpleStringProperty type;
@@ -39,11 +41,9 @@ public class Furniture {
     public String getColor(){ return color.get();}
     public void setColor(String value){ color.set(value);}
 
-    public void LookInfo()
-    {
-        System.out.println("Main Info:");
-        System.out.printf("Type: %s\nName: %s\nWidth: %d\nHeight: %d\nLength: %d\nColor: %s\n",
-                type, name, width, height, length, color);
-        System.out.print("\n");
+    public String[] returnArray(){
+        return new String[] {type.get(), name.get(), String.valueOf(width.get()),  String.valueOf(height.get()),
+                            String.valueOf(length.get()), color.get()};
     }
+
 }

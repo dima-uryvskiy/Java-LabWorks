@@ -3,8 +3,8 @@ package sample;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -12,6 +12,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 
 public class Main extends Application{
 
@@ -33,8 +34,8 @@ public class Main extends Application{
 
         // определяем таблицу и устанавливаем данные
         TableView<Furniture> table = new TableView<Furniture>(furniture);
-        table.setPrefWidth(400);
-        table.setPrefHeight(200);
+        table.setPrefWidth(367);
+        table.setPrefHeight(150);
 
 
         // столбец для вывода имени
@@ -87,11 +88,15 @@ public class Main extends Application{
             }
         });
 
+        for (Furniture temp: table.getItems())
+        {
 
-
+            System.out.println(temp.returnArray());
+        }
 
         FlowPane root = new FlowPane(Orientation.HORIZONTAL, 10, 15, labelField, fieldInput, labelValue, valueInput, btn, table);
-        Scene scene = new Scene(root, 600, 200);
+        root.setAlignment(Pos.CENTER);
+        Scene scene = new Scene(root, 600, 300);
 
         stage.setScene(scene);
 
