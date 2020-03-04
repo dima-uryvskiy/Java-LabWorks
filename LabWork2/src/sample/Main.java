@@ -1,11 +1,14 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -30,8 +33,9 @@ public class Main extends Application{
 
         // определяем таблицу и устанавливаем данные
         TableView<Furniture> table = new TableView<Furniture>(furniture);
-        table.setPrefWidth(500);
-        table.setPrefHeight(300);
+        table.setPrefWidth(400);
+        table.setPrefHeight(200);
+
 
         // столбец для вывода имени
         TableColumn<Furniture, String> typeColumn = new TableColumn<Furniture, String>("Type");
@@ -62,11 +66,35 @@ public class Main extends Application{
         table.getColumns().add(colorColumn);
 
 
-        FlowPane root = new FlowPane(10, 10, table);
+        Label labelField = new Label("Field:");
+        TextField fieldInput = new TextField();
 
-        Scene scene = new Scene(root, 670, 400);
+        Label labelValue = new Label("Value:");
+        TextField valueInput = new TextField();
+
+
+        Button btn = new Button("Find");
+        btn.setPrefWidth(80);
+        String field = "name";
+        String value = "MacBook";
+
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+               //field = fieldInput.getText();
+               //value = valueInput.getText();
+            }
+        });
+
+
+
+
+        FlowPane root = new FlowPane(Orientation.HORIZONTAL, 10, 15, labelField, fieldInput, labelValue, valueInput, btn, table);
+        Scene scene = new Scene(root, 600, 200);
 
         stage.setScene(scene);
+
         stage.setTitle("TableView in JavaFX");
         stage.show();
     }
