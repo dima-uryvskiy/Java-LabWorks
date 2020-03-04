@@ -1,0 +1,38 @@
+мар. 04, 2020 9:54:26 AM com.company.Main main
+INFO: Start main and read csv file
+мар. 04, 2020 10:23:46 AM com.company.Main main
+INFO: Start main and read csv file
+мар. 04, 2020 10:23:47 AM com.company.Main main
+INFO: Create array object
+мар. 04, 2020 10:23:47 AM com.company.Main main
+INFO: Add objects in array
+мар. 04, 2020 10:23:47 AM com.company.Main main
+INFO: Serialization
+мар. 04, 2020 10:23:47 AM com.company.Main main
+INFO: Deserialization
+мар. 04, 2020 10:23:47 AM com.company.Main main
+INFO: Print info
+мар. 04, 2020 10:23:55 AM com.company.Main main
+INFO: Start main and read csv file
+мар. 04, 2020 10:23:55 AM com.company.Main main
+INFO: Create array object
+мар. 04, 2020 10:23:55 AM com.company.Main main
+INFO: Add objects in array
+мар. 04, 2020 10:23:55 AM com.company.Main main
+INFO: Serialization
+мар. 04, 2020 10:23:55 AM com.company.Main main
+INFO: Deserialization
+мар. 04, 2020 10:23:55 AM com.company.Main main
+INFO: Print info
+мар. 04, 2020 10:24:24 AM com.company.Main main
+INFO: Start main and read csv file
+мар. 04, 2020 10:24:24 AM com.company.Main main
+INFO: Create array object
+мар. 04, 2020 10:24:24 AM com.company.Main main
+INFO: Add objects in array
+мар. 04, 2020 10:24:24 AM com.company.Main main
+INFO: Serialization
+мар. 04, 2020 10:24:24 AM com.company.Main main
+INFO: Deserialization
+мар. 04, 2020 10:24:24 AM com.company.Main main
+INFO: Print info
