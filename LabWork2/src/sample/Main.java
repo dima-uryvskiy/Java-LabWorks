@@ -13,10 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class Main extends Application{
     static String field;
@@ -28,30 +24,6 @@ public class Main extends Application{
         Application.launch(args);
     }
 
-    public static void Find(TableView<Furniture> table)
-    {
-        ArrayList<String[]> listTable = new ArrayList<String[]>();
-        for (Furniture objects: table.getItems()) {
-            listTable.add(objects.returnArray());
-        }
-
-        Map<String, Integer> dictionary = new HashMap<String, Integer>();
-        dictionary.put("type", 0);
-        dictionary.put("name", 1);
-        dictionary.put("width", 2);
-        dictionary.put("height", 3);
-        dictionary.put("length", 4);
-        dictionary.put("color", 5);
-
-        for (String[] t: listTable)
-        {
-            if (t[dictionary.get(field.toLowerCase())].indexOf(value) != -1)
-                break;
-            index++;
-        }
-        table.getSelectionModel().select(index);
-        index = 0;
-    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -126,11 +98,8 @@ public class Main extends Application{
 
                 field = fieldInput.getText();
                 value = valueInput.getText();
-                Find(table);
+                Controller.FindRow(table, index, field, value);
             }
         });
     }
-
-
-
 }
