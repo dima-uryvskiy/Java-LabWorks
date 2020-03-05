@@ -69,7 +69,8 @@ public class Main extends Application{
         table.getColumns().add(colorColumn);
 
         Label labelField = new Label("Field:");
-        TextField fieldInput = new TextField();
+        ObservableList<String> fields = FXCollections.observableArrayList("Type", "Name", "Width", "Height", "Length", "Color");
+        ComboBox<String> fieldComboBox = new ComboBox<String>(fields);
 
         Label labelValue = new Label("Value:");
         TextField valueInput = new TextField();
@@ -77,7 +78,7 @@ public class Main extends Application{
         Button btn = new Button("Find");
         btn.setPrefWidth(80);
 
-        FlowPane root = new FlowPane(Orientation.HORIZONTAL, 10, 15, labelField, fieldInput, labelValue, valueInput, btn, table);
+        FlowPane root = new FlowPane(Orientation.HORIZONTAL, 10, 15, labelField, fieldComboBox, labelValue, valueInput, btn, table);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(root, 600, 300);
 
@@ -90,7 +91,7 @@ public class Main extends Application{
             @Override
             public void handle(ActionEvent event) {
 
-                field = fieldInput.getText();
+                field = fieldComboBox.getValue();
                 value = valueInput.getText();
                 Controller.FindRow(table, index, field, value);
             }
