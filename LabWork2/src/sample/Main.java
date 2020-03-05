@@ -13,6 +13,10 @@ import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Main extends Application{
     static String field;
@@ -22,6 +26,31 @@ public class Main extends Application{
     public static void main(String[] args) {
 
         Application.launch(args);
+    }
+
+    public static void Find(TableView<Furniture> table)
+    {
+        ArrayList<String[]> listTable = new ArrayList<String[]>();
+        for (Furniture objects: table.getItems()) {
+            listTable.add(objects.returnArray());
+        }
+
+        Map<String, Integer> dictionary = new HashMap<String, Integer>();
+        dictionary.put("type", 0);
+        dictionary.put("name", 1);
+        dictionary.put("width", 2);
+        dictionary.put("height", 3);
+        dictionary.put("length", 4);
+        dictionary.put("color", 5);
+
+        for (String[] t: listTable)
+        {
+            if (t[dictionary.get(field.toLowerCase())].indexOf(value) != -1)
+                break;
+            index++;
+        }
+        table.getSelectionModel().select(index);
+        index = 0;
     }
 
     @Override
@@ -39,6 +68,7 @@ public class Main extends Application{
         TableView<Furniture> table = new TableView<Furniture>(furniture);
         table.setPrefWidth(367);
         table.setPrefHeight(150);
+
 
         // столбец для вывода имени
         TableColumn<Furniture, String> typeColumn = new TableColumn<Furniture, String>("Type");
@@ -68,14 +98,17 @@ public class Main extends Application{
         colorColumn.setCellValueFactory(new PropertyValueFactory<Furniture, String>("color"));
         table.getColumns().add(colorColumn);
 
+
         Label labelField = new Label("Field:");
         TextField fieldInput = new TextField();
 
         Label labelValue = new Label("Value:");
         TextField valueInput = new TextField();
 
+
         Button btn = new Button("Find");
         btn.setPrefWidth(80);
+
 
         FlowPane root = new FlowPane(Orientation.HORIZONTAL, 10, 15, labelField, fieldInput, labelValue, valueInput, btn, table);
         root.setAlignment(Pos.CENTER);
@@ -87,13 +120,17 @@ public class Main extends Application{
         stage.show();
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
+
             @Override
             public void handle(ActionEvent event) {
 
                 field = fieldInput.getText();
                 value = valueInput.getText();
-                Controller.FindRow(table, index, field, value);
+                Find(table);
             }
         });
     }
+
+
+
 }

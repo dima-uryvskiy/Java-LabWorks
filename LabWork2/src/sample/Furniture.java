@@ -2,6 +2,8 @@ package sample;
 
 import javafx.beans.property.*;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Furniture {
 
