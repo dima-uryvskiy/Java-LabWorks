@@ -24,7 +24,6 @@ public class Main extends Application{
         Application.launch(args);
     }
 
-
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -40,7 +39,6 @@ public class Main extends Application{
         TableView<Furniture> table = new TableView<Furniture>(furniture);
         table.setPrefWidth(367);
         table.setPrefHeight(150);
-
 
         // столбец для вывода имени
         TableColumn<Furniture, String> typeColumn = new TableColumn<Furniture, String>("Type");
@@ -70,17 +68,14 @@ public class Main extends Application{
         colorColumn.setCellValueFactory(new PropertyValueFactory<Furniture, String>("color"));
         table.getColumns().add(colorColumn);
 
-
         Label labelField = new Label("Field:");
         TextField fieldInput = new TextField();
 
         Label labelValue = new Label("Value:");
         TextField valueInput = new TextField();
 
-
         Button btn = new Button("Find");
         btn.setPrefWidth(80);
-
 
         FlowPane root = new FlowPane(Orientation.HORIZONTAL, 10, 15, labelField, fieldInput, labelValue, valueInput, btn, table);
         root.setAlignment(Pos.CENTER);
@@ -92,7 +87,6 @@ public class Main extends Application{
         stage.show();
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
 
