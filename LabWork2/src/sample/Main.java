@@ -13,12 +13,44 @@ import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Main extends Application{
+    static String field;
+    static String value;
+    static int index;
 
     public static void main(String[] args) {
 
         Application.launch(args);
+    }
+
+    public static void Find(TableView<Furniture> table)
+    {
+        ArrayList<String[]> listTable = new ArrayList<String[]>();
+        for (Furniture objects: table.getItems()) {
+            listTable.add(objects.returnArray());
+        }
+
+        Map<String, Integer> dictionary = new HashMap<String, Integer>();
+        dictionary.put("type", 0);
+        dictionary.put("name", 1);
+        dictionary.put("width", 2);
+        dictionary.put("height", 3);
+        dictionary.put("length", 4);
+        dictionary.put("color", 5);
+
+        for (String[] t: listTable)
+        {
+            if (t[dictionary.get(field.toLowerCase())].indexOf(value) != -1)
+                break;
+            index++;
+        }
+        table.getSelectionModel().select(index);
+        index = 0;
     }
 
     @Override
@@ -76,22 +108,6 @@ public class Main extends Application{
 
         Button btn = new Button("Find");
         btn.setPrefWidth(80);
-        String field = "name";
-        String value = "MacBook";
-
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-               //field = fieldInput.getText();
-               //value = valueInput.getText();
-            }
-        });
-
-        for (Furniture objects: table.getItems()) {
-            String [] arrayTable = objects.returnArray();
-        }
-
 
 
         FlowPane root = new FlowPane(Orientation.HORIZONTAL, 10, 15, labelField, fieldInput, labelValue, valueInput, btn, table);
@@ -102,5 +118,19 @@ public class Main extends Application{
 
         stage.setTitle("TableView in JavaFX");
         stage.show();
+
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+
+                field = fieldInput.getText();
+                value = valueInput.getText();
+                Find(table);
+            }
+        });
     }
+
+
+
 }

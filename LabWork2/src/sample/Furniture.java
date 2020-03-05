@@ -2,6 +2,7 @@ package sample;
 
 import javafx.beans.property.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Furniture {
@@ -43,7 +44,7 @@ public class Furniture {
 
     public String[] returnArray(){
         return new String[] {type.get(), name.get(), String.valueOf(width.get()),  String.valueOf(height.get()),
-                            String.valueOf(length.get()), color.get()};
+                String.valueOf(length.get()), color.get()};
     }
 
 }
