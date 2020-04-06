@@ -1,19 +1,14 @@
 package com.company;
 public class Chair extends Furniture
 {
-    public Chair(String [] allParameters)
+    public Chair(String [] parameters)
     {
-        CreateFromText(allParameters);
-    }
-
-    @Override public void CreateFromText(String [] allParameters)
-    {
-        this.type = allParameters[0];
-        this.name = allParameters[1];
-        this.width = Integer.valueOf(allParameters[2]);
-        this.height = Integer.valueOf(allParameters[3]);
-        this.length = Integer.valueOf(allParameters[4]);
-        this.color = allParameters[5];
+        this.type = parameters[0];
+        this.name = parameters[1];
+        this.width = Integer.valueOf(parameters[2]);
+        this.height = Integer.valueOf(parameters[3]);
+        this.length = Integer.valueOf(parameters[4]);
+        this.color = parameters[5];
     }
 
     @Override public void LookInfo()

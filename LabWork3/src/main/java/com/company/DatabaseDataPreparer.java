@@ -11,9 +11,9 @@ public class DatabaseDataPreparer
         Field[] allFields = DataSours.getClass().getFields();
         for(Field field: allFields)
         {
-            allFieldsAtOneString.append(field.getName()+",");
+            allFieldsAtOneString.append(field.getName() + ",");
             try {
-                allDataAtOneString.append("'" + String.valueOf(field.get(DataSours)) + "',");
+                allDataAtOneString.append("'" + field.get(DataSours) + "',");
             }
             catch (IllegalAccessException ex) {
                 ex.printStackTrace();

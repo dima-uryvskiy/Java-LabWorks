@@ -15,25 +15,10 @@ public class FileReaderWriter
     {
         CSVReader reader = new CSVReader(new FileReader(downloadFilePath), ',', '\0', 0);
         String[] nextLine;
-        ArrayList<String []> allData = new ArrayList<String[]>();
+        ArrayList<String []> data = new ArrayList<String[]>();
         while ((nextLine = reader.readNext()) != null)
-        {
-            if (nextLine != null)
-            {
-                allData.add(nextLine);
-            }
-        }
-        return allData;
-    }
-
-    static public void CreateFile (ArrayList<String []> fileData, String unloadFilePath)  throws IOException
-    {
-        CSVWriter writer = new CSVWriter(new FileWriter(unloadFilePath), ';','\0');
-        for (String[] string:fileData)
-        {
-            writer.writeNext(string);
-        }
-        writer.close();
+                data.add(nextLine);
+        return data;
     }
 }
 
