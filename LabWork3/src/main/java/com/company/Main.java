@@ -29,10 +29,7 @@ public class Main
                         dataForDatabase.get(i).getValue1());
             }
 
-            // вызов метода с параметрами
-            databaseMediator.SelectFieldsFromTable(
-                    furnitures.get(0).TakeClassName(),
-                    new LinkedList(Arrays.asList(dataForDatabase.get(0).getValue0().split(","))));
+            databaseMediator.InsertRow();
 
             databaseMediator.Disconnect();
         }

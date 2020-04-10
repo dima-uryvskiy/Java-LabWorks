@@ -129,4 +129,49 @@ public class DatabaseMediator
             System.out.println("Update if " + tableName + " is failed");
         }
     }
+
+
+    public void  InsertRow()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Input product type: ");
+        String type = scanner.nextLine();
+
+        System.out.print("Input product name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Input product color: ");
+        String color = scanner.nextLine();
+
+        System.out.print("Input product width: ");
+        int width = scanner.nextInt();
+
+        System.out.print("Input product height: ");
+        int height = scanner.nextInt();
+
+        System.out.print("Input product length: ");
+        int length = scanner.nextInt();
+
+        System.out.print("\n");
+
+        try {
+                String sql = "INSERT INTO chair (type, name, width, height, length, color) Values (?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, type);
+                preparedStatement.setString(2, name);
+                preparedStatement.setInt(3, width);
+                preparedStatement.setInt(4, height);
+                preparedStatement.setInt(5, length);
+                preparedStatement.setString(6, color);
+                int rows = preparedStatement.executeUpdate();
+
+                System.out.printf("%d rows added", rows);
+                connection.commit();
+                preparedStatement.close();
+        }
+        catch(Exception ex) {
+            System.out.println("Connection failed...");
+        }
+    }
 }
