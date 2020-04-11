@@ -157,6 +157,7 @@ public class DatabaseMediator
 
         try {
                 String sql = "INSERT INTO chair (type, name, width, height, length, color) Values (?, ?, ?, ?, ?, ?)";
+                
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, type);
                 preparedStatement.setString(2, name);
