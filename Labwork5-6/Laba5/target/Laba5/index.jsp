@@ -1,11 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Очень простая страница JSP</title>
+    <title>LabWork5</title>
 </head>
 <body>
-<h1>Очень простая страница JSP</h1>
-<hЗ> Этот пример показывает, как работать с выражениями JSP</h3>
-    Текущая дата: <%= new java.util.Date()%>
-    <br>
-    Значение переданного параметра "param":
+<h1>Hello Servlet  test start</h1>
 </body>
+</html>
