@@ -8,5 +8,6 @@
     <p>Name: <input type="text" name="nameFile"/></p>
     <input type="submit" value="Confirm"/></br>
 </form>
+<img src="data:image/jpg;base64,${encodedString}" onError="this.style.display='none'" />
 </body>
 </html>

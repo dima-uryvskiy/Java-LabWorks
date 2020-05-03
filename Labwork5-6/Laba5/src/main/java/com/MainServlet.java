@@ -1,14 +1,14 @@
 package com;
 
-import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.FileUtils;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;;
-import java.awt.image.BufferedImage;
-
 import java.io.IOException;
+import java.util.Base64;
 
 public class MainServlet extends HttpServlet {
 
@@ -16,23 +16,19 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        ServletContext selvletContext = getServletContext();
 
         String name = req.getParameter("nameFile");
 
         if (name != null) {
             GetImage getImage = new GetImage();
-            BufferedImage image = getImage.GetImage(req.getParameter("nameFile"));
-            System.out.println(image);
+            byte[]fileContent = FileUtils.readFileToByteArray(getImage.GetImage(name));
+            String encodedString = Base64.getEncoder().encodeToString(fileContent);  // convert to BASE64
 
-
-            //if (image != null) {
-              //  byte[] imageBytes = ((DataBufferByte) image.getData().getDataBuffer()).getData();
-                //Base64 base = new Base64();
-                //System.out.println(base.encode(imageBytes));
-            //
-            //    <img src="data:image/jpg;base64,iVBORw0KGgoAAAANS..." />
-            //}
+            if (encodedString != null) {
+                selvletContext.setAttribute("encodedString", encodedString);
+                getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+            }
         }
     }
 }

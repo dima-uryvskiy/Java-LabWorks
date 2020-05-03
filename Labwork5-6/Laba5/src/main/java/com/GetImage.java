@@ -1,7 +1,5 @@
 package com;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -25,12 +23,11 @@ public class GetImage {
         return false;
     }
 
-
-    public BufferedImage GetImage(String name) throws IOException {
+    public File GetImage(String name) throws IOException {
         path = "/Users/dima/Desktop/images";
-        
+
         if (this.FindImage(name)) {
-             return ImageIO.read( new File(path));
+             return new File(path);
         }
         return null;
     }
