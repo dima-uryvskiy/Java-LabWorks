@@ -24,7 +24,7 @@ public class GetImage {
     }
 
     public File GetImage(String name) throws IOException {
-        path = "/Users/dima/Desktop/images";
+        path = "/Users/dima/Desktop/Java LabWorks/LabWork5-6/images";
 
         if (this.FindImage(name)) {
              return new File(path);

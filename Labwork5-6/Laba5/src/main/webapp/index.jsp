@@ -9,5 +9,6 @@
     <input type="submit" value="Confirm"/></br>
 </form>
 <img src="data:image/jpg;base64,${encodedString}" onError="this.style.display='none'" />
+<p>${errorMessage}</p>
 </body>
 </html>
