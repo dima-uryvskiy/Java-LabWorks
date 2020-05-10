@@ -1,6 +1,16 @@
 package com.company;
+
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Chair extends Furniture
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
     public Chair(String [] parameters)
     {
         this.type = parameters[0];
@@ -9,6 +19,14 @@ public class Chair extends Furniture
         this.height = Integer.valueOf(parameters[3]);
         this.length = Integer.valueOf(parameters[4]);
         this.color = parameters[5];
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override public void LookInfo()

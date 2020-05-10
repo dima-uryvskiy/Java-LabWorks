@@ -20,7 +20,8 @@
 
 
 
-        <mapping class="org.javabrains.sanjaya.dto.UserDetails"/>
+        <mapping class="com.company.Chair" />
+        <mapping class="com.company.Table_T" />
 
     </session-factory>
 </hibernate-configuration>

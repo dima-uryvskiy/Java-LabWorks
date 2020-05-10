@@ -1,7 +1,23 @@
 package com.company;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Table_T extends Furniture
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Table_T(String []  parameters)
     {
         this.type = parameters[0];

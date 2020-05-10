@@ -10,5 +10,4 @@ public abstract class Furniture implements Serializable
     public int length;
     public String color;
     public void LookInfo(){};
-    public String TakeClassName(){return this.getClass().getSimpleName();};
 }
