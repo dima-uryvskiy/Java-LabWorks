@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.company.TableTEntity" table="table_t" schema="public" catalog="test">
+        <id name="tableId">
+            <column name="table_id" sql-type="integer"/>
+        </id>
+        <property name="type">
+            <column name="type" sql-type="char(75)" length="75"/>
+        </property>
+        <property name="name">
+            <column name="name" sql-type="char(75)" length="75"/>
+        </property>
+        <property name="width">
+            <column name="width" sql-type="integer"/>
+        </property>
+        <property name="height">
+            <column name="height" sql-type="integer"/>
+        </property>
+        <property name="length">
+            <column name="length" sql-type="integer"/>
+        </property>
+        <property name="color">
+            <column name="color" sql-type="char(75)" length="75"/>
+        </property>
+    </class>
+</hibernate-mapping>
