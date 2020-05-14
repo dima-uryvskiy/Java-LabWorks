@@ -1,4 +1,6 @@
 package com.company;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +16,9 @@ public class Furniture
     private String color;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column (name = "id")
     public Long getId() {
         return id;
     }

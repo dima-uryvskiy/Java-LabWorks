@@ -1,8 +1,5 @@
 package com.company;
 
-import com.company.util.HibernateUtil;
-import org.hibernate.classic.Session;
-
 import java.io.IOException;
 import java.util.*;
 
@@ -27,17 +24,24 @@ public class Main
             furnitures.add(furniture);
         }
 
-        for (Furniture obj: furnitures)
-            obj.LookInfo();
+        for (Furniture furniture: furnitures) {
+            furniture.LookInfo();
+        }
 
+        FurnitureDAO furnitureDAO = new FurnitureDAO();
 
+        for (Furniture furniture: furnitures)
+            furnitureDAO.addFurniture(furniture);
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        //TODO: добавить ввод пользователя на значение и в каком меняем в общем сделать менюшку
+        furnitures.get(0).setName("Hello");
+        furnitureDAO.updateFurniture(furnitures.get(0));
 
-        session.beginTransaction();
+        furnitureDAO.deleteFurniture(furnitures.get(0));
 
-        session.save(furnitures.get(3));
+        //TODO: добавить ввод пользователя
+        furnitureDAO.getFurnitureById(Long.parseLong("3")).LookInfo();
 
-        session.getTransaction().commit();
+        //TODO: разобраться с методом getAllFurnitures
     }
 }
