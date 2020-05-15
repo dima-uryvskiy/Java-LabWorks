@@ -69,7 +69,7 @@ public class FurnitureDAO implements FurnitureDAOInterface
         return furniture;
     }
 
-    public List getAllFurnitures(Furniture furniture)
+    public List<Furniture> getAllFurnitures()
     {
         Session session = null;
         List<Furniture> furnitures = null;

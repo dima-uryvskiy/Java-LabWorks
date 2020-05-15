@@ -6,6 +6,11 @@ import java.util.*;
 public class Main
 {
 
+    private static boolean CheckIndex(int index, int lengthArray)
+    {
+        return index >= 0 && index < lengthArray;
+    }
+
     public static void main(String[] args) throws IOException, ClassNotFoundException
     {
         ArrayList<String[]> data = FileReaderWriter.ReadFromFile("DataFile.csv");
@@ -28,20 +33,46 @@ public class Main
             furniture.LookInfo();
         }
 
+        int lengthArray = furnitures.size();
+
+        Scanner scanner = new Scanner(System.in);
         FurnitureDAO furnitureDAO = new FurnitureDAO();
 
         for (Furniture furniture: furnitures)
             furnitureDAO.addFurniture(furniture);
 
-        //TODO: добавить ввод пользователя на значение и в каком меняем в общем сделать менюшку
-        furnitures.get(0).setName("Hello");
-        furnitureDAO.updateFurniture(furnitures.get(0));
+        System.out.print("Input index, when you want update name: ");
+        int index = scanner.nextInt();
 
-        furnitureDAO.deleteFurniture(furnitures.get(0));
+        if (CheckIndex(index, lengthArray)) {
+            System.out.print("Input new name: ");
+            String name = scanner.nextLine();
 
-        //TODO: добавить ввод пользователя
-        furnitureDAO.getFurnitureById(Long.parseLong("3")).LookInfo();
+            furnitures.get(index).setName(name);
+            furnitureDAO.updateFurniture(furnitures.get(index));
+        }
 
-        //TODO: разобраться с методом getAllFurnitures
+        System.out.print("Input index, object which you want delete: ");
+        index = scanner.nextInt();
+
+        if  (CheckIndex(index, lengthArray)) {
+            furnitureDAO.deleteFurniture(furnitures.get(index));
+        }
+
+        System.out.print("Input index, object which you want look main info: ");
+        index = scanner.nextInt();
+
+        if  (CheckIndex(index, lengthArray)) {
+            furnitureDAO.getFurnitureById(Long.parseLong(Integer.toString(index))).LookInfo();
+        }
+
+        for (Furniture fur: furnitureDAO.getAllFurnitures()){
+                System.out.println(fur.getName());
+        }
+
+        //TODO: добавить еще 2 сущности переделать эту под офис и связать
+        //TODO: офис может содержать стулья и столы
+        //TODO: session.createQuery("FROM Furniture WHERE name = 'Mini'");
+        //TODO: Json можно использовать вместо CSV
     }
 }
