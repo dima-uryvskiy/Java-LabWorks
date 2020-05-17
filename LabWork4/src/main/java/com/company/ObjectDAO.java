@@ -3,20 +3,19 @@ package com.company;
 import com.company.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.classic.Session;
-
 import javax.swing.*;
 import java.util.List;
 
-public class ChairDAO implements FurnitureDAOInterface
+public class ObjectDAO
 {
-    public void addFurniture(Chair chair)
+    public void addValue(Object object)
     {
         Session session = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(chair);
+            session.save(object);
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
@@ -28,14 +27,14 @@ public class ChairDAO implements FurnitureDAOInterface
         }
     }
 
-    public void updateFurniture(Chair chair)
+    public void updateValue(Object object)
     {
         Session session = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(chair);
+            session.update(object);
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
@@ -47,7 +46,26 @@ public class ChairDAO implements FurnitureDAOInterface
         }
     }
 
-    public Chair getFurnitureById(Long idFurniture)
+    public void deleteValue(Object object)
+    {
+        Session session = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(object);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Error I/O", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+    }
+
+    public Object getChairById(Long idObject) // --
     {
         Session session = null;
         Chair chair = null;
@@ -55,7 +73,7 @@ public class ChairDAO implements FurnitureDAOInterface
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            chair = (Chair) session.get(Chair.class, idFurniture);
+            chair = (Chair) session.get(Chair.class, idObject);
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
@@ -69,16 +87,16 @@ public class ChairDAO implements FurnitureDAOInterface
         return chair;
     }
 
-    public List<Chair> getAllFurnitures()
+    public List getAllFurnitures(String nameValue)  // --
     {
         Session session = null;
-        List<Chair> chairs = null;
+        //List<Furniture> furnitures = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.getTransaction().begin();
-            Query query = session.createQuery("FROM Chair");
-            chairs = (List<Chair>) query.list();
+           // Query query = session.createQuery("FROM Furniture Where name = nameValue");
+            //furnitures = (List<Furniture>) query.list();
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
@@ -88,25 +106,6 @@ public class ChairDAO implements FurnitureDAOInterface
                 session.close();
             }
         }
-        return chairs;
-    }
-
-    public void deleteFurniture(Chair chair)
-    {
-        Session session = null;
-
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(chair);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(),
-                    "Error I/O", JOptionPane.OK_OPTION);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        return null;
     }
 }

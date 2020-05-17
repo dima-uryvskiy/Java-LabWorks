@@ -20,7 +20,7 @@
 
 
 
-        <mapping class="com.company.Furniture" />
+        <mapping class="com.company.Chair" />
 
     </session-factory>
 </hibernate-configuration>

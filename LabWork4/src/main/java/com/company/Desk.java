@@ -4,8 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "chair")
-public class Chair
+@Table(name = "desk")
+public class Desk
 {
     private Long id;
     private String type;

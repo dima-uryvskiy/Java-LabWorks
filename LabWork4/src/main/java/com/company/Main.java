@@ -36,43 +36,42 @@ public class Main
         int lengthArray = chairs.size();
 
         Scanner scanner = new Scanner(System.in);
-        ChairDAO chairDAO = new ChairDAO();
+        ObjectDAO objectDAO = new ObjectDAO();
 
         for (Chair chair : chairs)
-            chairDAO.addFurniture(chair);
+            objectDAO.addValue(chair);
 
-        System.out.print("Input index, when you want update name: ");
-        int index = scanner.nextInt();
+        //System.out.print("Input index, when you want update name: ");
+        int index = 3;//scanner.nextInt();
 
         if (CheckIndex(index, lengthArray)) {
-            System.out.print("Input new name: ");
-            String name = scanner.nextLine();
+           // System.out.print("Input new name: ");
+            String name = "Hello";//scanner.nextLine();
 
             chairs.get(index).setName(name);
-            chairDAO.updateFurniture(chairs.get(index));
+            objectDAO.updateValue(chairs.get(index));
         }
 
-        System.out.print("Input index, object which you want delete: ");
-        index = scanner.nextInt();
+        //System.out.print("Input index, object which you want delete: ");
+        index = 2;//scanner.nextInt();
 
         if  (CheckIndex(index, lengthArray)) {
-            chairDAO.deleteFurniture(chairs.get(index));
+            objectDAO.deleteValue(chairs.get(index));
         }
 
-        System.out.print("Input index, object which you want look main info: ");
-        index = scanner.nextInt();
+        //System.out.print("Input index, object which you want look main info: ");
+        index = 1;//scanner.nextInt();
 
-        if  (CheckIndex(index, lengthArray)) {
-            chairDAO.getFurnitureById(Long.parseLong(Integer.toString(index))).LookInfo();
-        }
+        //if  (CheckIndex(index, lengthArray)) {
+          //  object = objectDAO.getObjectById(Long.parseLong(Integer.toString(index)));
+        //}
 
-        for (Chair fur: chairDAO.getAllFurnitures()){
-                System.out.println(fur.getName());
-        }
+       // for (Chair fur: chairDAO.getAllValue()){
+              //  System.out.println(fur.getName());
+       // }
 
         //TODO: добавить еще 2 сущности переделать эту под офис и связать
         //TODO: офис может содержать стулья и столы
-        //TODO: session.createQuery("FROM Furniture WHERE name = 'Mini'");
         //TODO: Json можно использовать вместо CSV
     }
 }
