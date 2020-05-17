@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "furnitures")
-public class Furniture
+public class Chair
 {
     private Long id;
     private String type;

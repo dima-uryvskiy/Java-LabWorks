@@ -7,16 +7,16 @@ import org.hibernate.classic.Session;
 import javax.swing.*;
 import java.util.List;
 
-public class FurnitureDAO implements FurnitureDAOInterface
+public class ChairDAO implements FurnitureDAOInterface
 {
-    public void addFurniture(Furniture furniture)
+    public void addFurniture(Chair chair)
     {
         Session session = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(furniture);
+            session.save(chair);
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
@@ -28,14 +28,14 @@ public class FurnitureDAO implements FurnitureDAOInterface
         }
     }
 
-    public void updateFurniture(Furniture furniture)
+    public void updateFurniture(Chair chair)
     {
         Session session = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(furniture);
+            session.update(chair);
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
@@ -47,15 +47,15 @@ public class FurnitureDAO implements FurnitureDAOInterface
         }
     }
 
-    public Furniture getFurnitureById(Long idFurniture)
+    public Chair getFurnitureById(Long idFurniture)
     {
         Session session = null;
-        Furniture furniture = null;
+        Chair chair = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            furniture = (Furniture) session.get(Furniture.class, idFurniture);
+            chair = (Chair) session.get(Chair.class, idFurniture);
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
@@ -66,19 +66,19 @@ public class FurnitureDAO implements FurnitureDAOInterface
             }
         }
 
-        return furniture;
+        return chair;
     }
 
-    public List<Furniture> getAllFurnitures()
+    public List<Chair> getAllFurnitures()
     {
         Session session = null;
-        List<Furniture> furnitures = null;
+        List<Chair> chairs = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.getTransaction().begin();
-            Query query = session.createQuery("FROM Furniture");
-            furnitures = (List<Furniture>) query.list();
+            Query query = session.createQuery("FROM Chair");
+            chairs = (List<Chair>) query.list();
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
@@ -88,17 +88,17 @@ public class FurnitureDAO implements FurnitureDAOInterface
                 session.close();
             }
         }
-        return furnitures;
+        return chairs;
     }
 
-    public void deleteFurniture(Furniture furniture)
+    public void deleteFurniture(Chair chair)
     {
         Session session = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(furniture);
+            session.delete(chair);
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),

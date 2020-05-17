@@ -14,32 +14,32 @@ public class Main
     public static void main(String[] args) throws IOException, ClassNotFoundException
     {
         ArrayList<String[]> data = FileReaderWriter.ReadFromFile("DataFile.csv");
-        ArrayList<Furniture> furnitures = new ArrayList<Furniture>();
+        ArrayList<Chair> chairs = new ArrayList<Chair>();
 
         for (String[] furnitureData: data)
         {
-            Furniture furniture = new Furniture();
-            furniture.setType(furnitureData[0]);
-            furniture.setName(furnitureData[1]);
-            furniture.setWidth(Integer.valueOf(furnitureData[2]));
-            furniture.setHeight(Integer.valueOf(furnitureData[3]));
-            furniture.setLength(Integer.valueOf(furnitureData[4]));
-            furniture.setColor(furnitureData[5]);
+            Chair chair = new Chair();
+            chair.setType(furnitureData[0]);
+            chair.setName(furnitureData[1]);
+            chair.setWidth(Integer.valueOf(furnitureData[2]));
+            chair.setHeight(Integer.valueOf(furnitureData[3]));
+            chair.setLength(Integer.valueOf(furnitureData[4]));
+            chair.setColor(furnitureData[5]);
 
-            furnitures.add(furniture);
+            chairs.add(chair);
         }
 
-        for (Furniture furniture: furnitures) {
-            furniture.LookInfo();
+        for (Chair chair : chairs) {
+            chair.LookInfo();
         }
 
-        int lengthArray = furnitures.size();
+        int lengthArray = chairs.size();
 
         Scanner scanner = new Scanner(System.in);
-        FurnitureDAO furnitureDAO = new FurnitureDAO();
+        ChairDAO chairDAO = new ChairDAO();
 
-        for (Furniture furniture: furnitures)
-            furnitureDAO.addFurniture(furniture);
+        for (Chair chair : chairs)
+            chairDAO.addFurniture(chair);
 
         System.out.print("Input index, when you want update name: ");
         int index = scanner.nextInt();
@@ -48,25 +48,25 @@ public class Main
             System.out.print("Input new name: ");
             String name = scanner.nextLine();
 
-            furnitures.get(index).setName(name);
-            furnitureDAO.updateFurniture(furnitures.get(index));
+            chairs.get(index).setName(name);
+            chairDAO.updateFurniture(chairs.get(index));
         }
 
         System.out.print("Input index, object which you want delete: ");
         index = scanner.nextInt();
 
         if  (CheckIndex(index, lengthArray)) {
-            furnitureDAO.deleteFurniture(furnitures.get(index));
+            chairDAO.deleteFurniture(chairs.get(index));
         }
 
         System.out.print("Input index, object which you want look main info: ");
         index = scanner.nextInt();
 
         if  (CheckIndex(index, lengthArray)) {
-            furnitureDAO.getFurnitureById(Long.parseLong(Integer.toString(index))).LookInfo();
+            chairDAO.getFurnitureById(Long.parseLong(Integer.toString(index))).LookInfo();
         }
 
-        for (Furniture fur: furnitureDAO.getAllFurnitures()){
+        for (Chair fur: chairDAO.getAllFurnitures()){
                 System.out.println(fur.getName());
         }
 
