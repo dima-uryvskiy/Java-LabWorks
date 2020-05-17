@@ -19,3 +19,4 @@ public class Chair extends Furniture
         System.out.print("\n");
     }
 }
+
