@@ -50,11 +50,9 @@ public class Main
 
                 desks.add(desk);
             }
-
-
         }
 
-         //TODO: look main info about object
+         //Look main info about object
         for (Chair chair : chairs) {
             chair.LookInfo();
         }
@@ -67,9 +65,9 @@ public class Main
             office.LookInfo();
         }
 
-        //TODO: add values in data base
         ObjectDAO objectDAO = new ObjectDAO();
 
+        //Add values in data base
         for (Chair chair : chairs)
             objectDAO.addValue(chair);
 
@@ -79,8 +77,8 @@ public class Main
         for (Office office : offices)
             objectDAO.addValue(office);
 
+        //Update values in data base
         int index = 1;
-
         String name = "Hello";
 
         chairs.get(index).setName(name);
@@ -92,28 +90,36 @@ public class Main
         offices.get(index).setName(name);
         objectDAO.updateValue(offices.get(index));
 
-        index = 0;
+        //Delete values in data base
+        index = 2;
 
         objectDAO.deleteValue(chairs.get(index));
         objectDAO.deleteValue(desks.get(index));
         objectDAO.deleteValue(offices.get(index));
 
+        //Look main info values in data base
         index = 1;
 
-        objectDAO.getChairById(Long.parseLong(Integer.toString(index)));
-        objectDAO.getDeskById(Long.parseLong(Integer.toString(index)));
-        objectDAO.getOfficeById(Long.parseLong(Integer.toString(index)));
+        objectDAO.getChairById(Long.parseLong(Integer.toString(index))).LookInfo();
+        objectDAO.getDeskById(Long.parseLong(Integer.toString(index))).LookInfo();
+        objectDAO.getOfficeById(Long.parseLong(Integer.toString(index))).LookInfo();
 
-        //if  (CheckIndex(index, lengthArray)) {
-          //  object = objectDAO.getObjectById(Long.parseLong(Integer.toString(index)));
-        //}
 
-       // for (Chair fur: chairDAO.getAllValue()){
-              //  System.out.println(fur.getName());
-       // }
+        //Look main info values in data base
+        for (Chair chair: objectDAO.getAllChair()){
+              chair.LookInfo();
+        }
 
-        //TODO: добавить еще 2 сущности переделать эту под офис и связать
-        //TODO: офис может содержать стулья и столы
-        //TODO: Json можно использовать вместо CSV
+        for (Desk desk: objectDAO.getAllDesk()){
+            desk.LookInfo();
+        }
+
+        for (Office office: objectDAO.getAllOffice()){
+            office.LookInfo();
+        }
+
+        for (Object[]  office: objectDAO.hqlRequest()){
+            System.out.println(office.toString());
+        }
     }
 }

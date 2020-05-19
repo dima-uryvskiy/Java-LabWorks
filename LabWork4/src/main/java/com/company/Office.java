@@ -3,6 +3,7 @@ package com.company;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "office")
@@ -11,6 +12,12 @@ public class Office {
         private String type;
         private String name;
         private String city;
+
+        @OneToMany(mappedBy = "office", cascade = CascadeType.ALL, orphanRemoval = true)
+        private List<Chair> chairs;
+
+        @OneToMany(mappedBy = "office", cascade = CascadeType.ALL, orphanRemoval = true)
+        private List<Desk> desks;
 
         @Id
         @GeneratedValue(generator = "increment")

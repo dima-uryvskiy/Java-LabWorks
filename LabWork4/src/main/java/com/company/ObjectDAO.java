@@ -65,7 +65,7 @@ public class ObjectDAO
         }
     }
 
-    public Object getChairById(Long idObject) // --
+    public Chair getChairById(Long idObject)
     {
         Session session = null;
         Chair chair = null;
@@ -87,7 +87,7 @@ public class ObjectDAO
         return chair;
     }
 
-    public Object getDeskById(Long idObject)
+    public Desk getDeskById(Long idObject)
     {
         Session session = null;
         Desk desk = null;
@@ -109,7 +109,7 @@ public class ObjectDAO
         return desk;
     }
 
-    public Object getOfficeById(Long idObject)
+    public Office getOfficeById(Long idObject)
     {
         Session session = null;
         Office office = null;
@@ -131,16 +131,14 @@ public class ObjectDAO
         return office;
     }
 
-    public List getAllFurnitures(String nameValue)  // --
-    {
+    public List<Chair> getAllChair() {
         Session session = null;
-        //List<Furniture> furnitures = null;
+        List<Chair> chairs = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.getTransaction().begin();
-           // Query query = session.createQuery("FROM Furniture Where name = nameValue");
-            //furnitures = (List<Furniture>) query.list();
+            chairs = (List<Chair>)  HibernateUtil.getSessionFactory().openSession().createQuery("From Chair").list();
             session.getTransaction().commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
@@ -150,6 +148,50 @@ public class ObjectDAO
                 session.close();
             }
         }
-        return null;
+        return chairs;
+    }
+
+    public List<Desk> getAllDesk() {
+        Session session = null;
+        List<Desk> desks = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.getTransaction().begin();
+            desks = (List<Desk>)  HibernateUtil.getSessionFactory().openSession().createQuery("From Desk").list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Error I/O", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return desks;
+    }
+
+    public List<Office> getAllOffice() {
+        Session session = null;
+        List<Office> offices = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.getTransaction().begin();
+            offices = (List<Office>)  HibernateUtil.getSessionFactory().openSession().createQuery("From Office").list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Error I/O", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return offices;
+    }
+
+    public List<Object[]> hqlRequest() {
+        return (List<Object[]>)  HibernateUtil.getSessionFactory().openSession().createQuery("From Chair, Desk, Office office WHERE office.name LIKE 'Mini'").list();
     }
 }

@@ -15,6 +15,10 @@ public class Desk
     private int length;
     private String color;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_office")
+    private Office office;
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
@@ -79,6 +83,14 @@ public class Desk
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
     }
 
     public void LookInfo()
