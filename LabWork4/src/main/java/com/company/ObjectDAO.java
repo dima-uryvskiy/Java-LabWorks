@@ -87,6 +87,50 @@ public class ObjectDAO
         return chair;
     }
 
+    public Object getDeskById(Long idObject)
+    {
+        Session session = null;
+        Desk desk = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            desk = (Desk) session.get(Desk.class, idObject);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Error I/O", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+
+        return desk;
+    }
+
+    public Object getOfficeById(Long idObject)
+    {
+        Session session = null;
+        Office office = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            office = (Office) session.get(Office.class, idObject);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Error I/O", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+
+        return office;
+    }
+
     public List getAllFurnitures(String nameValue)  // --
     {
         Session session = null;

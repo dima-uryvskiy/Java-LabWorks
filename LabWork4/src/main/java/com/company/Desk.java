@@ -10,7 +10,7 @@ public class Desk
     private Long id;
     private String type;
     private String name;
-    private int width;
+    private int id_office;
     private int height;
     private int length;
     private String color;
@@ -45,13 +45,13 @@ public class Desk
         this.name = name;
     }
 
-    @Column (name = "width")
-    public int getWidth() {
-        return width;
+    @Column (name = "id_office")
+    public int getIdOffice() {
+        return id_office;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public void setIdOffice(int id_office) {
+        this.id_office = id_office;
     }
 
     @Column (name = "height")
@@ -84,8 +84,8 @@ public class Desk
     public void LookInfo()
     {
         System.out.println("Main Info:");
-        System.out.printf("Type: %s\nName: %s\nWidth: %d\nHeight: %d\nLength: %d\nColor: %s\n",
-                this.type, this.name, this.width, this.height, this.length, this.color);
+        System.out.printf("Type: %s\nName: %s\nId office: %d\nHeight: %d\nLength: %d\nColor: %s\n",
+                this.type, this.name, this.id_office, this.height, this.length, this.color);
         System.out.print("\n");
     }
 }
