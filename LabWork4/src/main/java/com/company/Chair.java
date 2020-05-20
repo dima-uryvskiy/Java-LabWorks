@@ -7,22 +7,30 @@ import javax.persistence.*;
 @Table(name = "chair")
 public class Chair
 {
-    private Long id;
-    private String type;
-    private String name;
-    private int id_office;
-    private int height;
-    private int length;
-    private String color;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_office")
-    private Office office;
-
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    @Column (name = "id")
+    @Column (name = "id_chair")
+    private Long id;
+
+    @Column (name = "type")
+    private String type;
+
+    @Column (name = "name")
+    private String name;
+
+    @Column (name = "weight")
+    private int weight;
+
+    @Column (name = "height")
+    private int height;
+
+    @Column (name = "length")
+    private int length;
+
+    @Column (name = "color")
+    private String color;
+
     public Long getId() {
         return id;
     }
@@ -31,7 +39,10 @@ public class Chair
         this.id = id;
     }
 
-    @Column (name = "type")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_office")
+    private Office office;
+
     public String getType() {
         return type;
     }
@@ -40,7 +51,6 @@ public class Chair
         this.type = type;
     }
 
-    @Column (name = "name")
     public String getName() {
         return name;
     }
@@ -49,16 +59,14 @@ public class Chair
         this.name = name;
     }
 
-    @Column (name = "id_office")
-    public int getIdOffice() {
-        return id_office;
+    public int getWeight() {
+        return weight;
     }
 
-    public void setIdOffice(int id_office) {
-        this.id_office = id_office;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
-    @Column (name = "height")
     public int getHeight() {
         return height;
     }
@@ -67,7 +75,6 @@ public class Chair
         this.height = height;
     }
 
-    @Column (name = "length")
     public int getLength() {
         return length;
     }
@@ -76,7 +83,6 @@ public class Chair
         this.length = length;
     }
 
-    @Column (name = "color")
     public String getColor() {
         return color;
     }
@@ -93,11 +99,13 @@ public class Chair
         this.office = office;
     }
 
-    public void LookInfo()
+    @Override
+    public String toString()
     {
-        System.out.println("Main Info:");
-        System.out.printf("Type: %s\nName: %s\nId office: %d\nHeight: %d\nLength: %d\nColor: %s\n",
-                this.type, this.name, this.id_office, this.height, this.length, this.color);
-        System.out.print("\n");
+        return
+                "Main Info:\n" +
+                "Type:" + type + "\nName:" + name +
+                "\nwight:" + weight + "\nHeight:" + height + "\nLength:" +
+                length + "\nColor:" + color + "\n";
     }
 }

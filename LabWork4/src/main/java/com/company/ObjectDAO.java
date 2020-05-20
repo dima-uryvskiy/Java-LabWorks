@@ -1,7 +1,6 @@
 package com.company;
 
 import com.company.util.HibernateUtil;
-import org.hibernate.Query;
 import org.hibernate.classic.Session;
 import javax.swing.*;
 import java.util.List;
@@ -129,46 +128,6 @@ public class ObjectDAO
         }
 
         return office;
-    }
-
-    public List<Chair> getAllChair() {
-        Session session = null;
-        List<Chair> chairs = null;
-
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.getTransaction().begin();
-            chairs = (List<Chair>)  HibernateUtil.getSessionFactory().openSession().createQuery("From Chair").list();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(),
-                    "Error I/O", JOptionPane.OK_OPTION);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return chairs;
-    }
-
-    public List<Desk> getAllDesk() {
-        Session session = null;
-        List<Desk> desks = null;
-
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.getTransaction().begin();
-            desks = (List<Desk>)  HibernateUtil.getSessionFactory().openSession().createQuery("From Desk").list();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(),
-                    "Error I/O", JOptionPane.OK_OPTION);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return desks;
     }
 
     public List<Office> getAllOffice() {

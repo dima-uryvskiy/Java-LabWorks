@@ -9,6 +9,7 @@ public class Main
     {
         ArrayList<String[]> dataOffice = FileReaderWriter.ReadFromFile("Office.csv");
         ArrayList<Office> offices = new ArrayList<Office>();
+        ObjectDAO objectDAO = new ObjectDAO();
         for (String[] officeData: dataOffice) {
             Office office = new Office();
             office.setType(officeData[0]);
@@ -30,11 +31,12 @@ public class Main
                 Chair chair = new Chair();
                 chair.setType(furnitureData[0]);
                 chair.setName(furnitureData[1]);
-                chair.setIdOffice(Integer.valueOf(furnitureData[2]));
+                chair.setWeight(Integer.valueOf(furnitureData[2]));
                 chair.setHeight(Integer.valueOf(furnitureData[3]));
                 chair.setLength(Integer.valueOf(furnitureData[4]));
                 chair.setColor(furnitureData[5]);
 
+                objectDAO.addValue(chair);
                 chairs.add(chair);
             }
 
@@ -43,79 +45,60 @@ public class Main
                 Desk desk = new Desk();
                 desk.setType(furnitureData[0]);
                 desk.setName(furnitureData[1]);
-                desk.setIdOffice(Integer.valueOf(furnitureData[2]));
+                desk.setWeight(Integer.valueOf(furnitureData[2]));
                 desk.setHeight(Integer.valueOf(furnitureData[3]));
                 desk.setLength(Integer.valueOf(furnitureData[4]));
                 desk.setColor(furnitureData[5]);
 
+                objectDAO.addValue(desk);
                 desks.add(desk);
             }
         }
 
          //Look main info about object
         for (Chair chair : chairs) {
-            chair.LookInfo();
+            chair.toString();
         }
 
         for (Desk desk : desks) {
-            desk.LookInfo();
+            desk.toString();
         }
 
         for (Office office : offices) {
-            office.LookInfo();
+            office.toString();
         }
 
-        ObjectDAO objectDAO = new ObjectDAO();
+        objectDAO = new ObjectDAO();
 
         //Add values in data base
-        for (Chair chair : chairs)
-            objectDAO.addValue(chair);
-
-        for (Desk desk : desks)
-            objectDAO.addValue(desk);
-
+        int indexObject = 0;
         for (Office office : offices)
+        {
             objectDAO.addValue(office);
+
+            office.addChairs(chairs.get(indexObject));
+            office.addDesks(desks.get(indexObject));
+        }
 
         //Update values in data base
         int index = 1;
         String name = "Hello";
 
-        chairs.get(index).setName(name);
-        objectDAO.updateValue(chairs.get(index));
-
-        desks.get(index).setName(name);
-        objectDAO.updateValue(desks.get(index));
-
         offices.get(index).setName(name);
         objectDAO.updateValue(offices.get(index));
 
         //Delete values in data base
-        index = 2;
+        index = 1;
 
-        objectDAO.deleteValue(chairs.get(index));
-        objectDAO.deleteValue(desks.get(index));
         objectDAO.deleteValue(offices.get(index));
 
         //Look main info values in data base
         index = 1;
 
-        objectDAO.getChairById(Long.parseLong(Integer.toString(index))).LookInfo();
-        objectDAO.getDeskById(Long.parseLong(Integer.toString(index))).LookInfo();
-        objectDAO.getOfficeById(Long.parseLong(Integer.toString(index))).LookInfo();
-
-
-        //Look main info values in data base
-        for (Chair chair: objectDAO.getAllChair()){
-              chair.LookInfo();
-        }
-
-        for (Desk desk: objectDAO.getAllDesk()){
-            desk.LookInfo();
-        }
+        System.out.println(objectDAO.getOfficeById(Long.parseLong(Integer.toString(index))).toString());
 
         for (Office office: objectDAO.getAllOffice()){
-            office.LookInfo();
+            System.out.println(office.toString());
         }
 
         for (Object[]  office: objectDAO.hqlRequest()){
