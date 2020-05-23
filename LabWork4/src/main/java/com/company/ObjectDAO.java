@@ -150,7 +150,7 @@ public class ObjectDAO
         return offices;
     }
 
-    public List<Object[]> hqlRequest() {
-        return (List<Object[]>)  HibernateUtil.getSessionFactory().openSession().createQuery("From Chair, Desk, Office office WHERE office.name LIKE 'Mini'").list();
+    public List<Office> hqlRequest() {
+        return (List<Office>)  HibernateUtil.getSessionFactory().openSession().createQuery("SELECT office From Chair, Desk, Office office WHERE office.name = 'Mini'").list();
     }
 }

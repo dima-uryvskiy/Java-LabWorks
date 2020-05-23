@@ -101,7 +101,7 @@ public class Main
             System.out.println(office.toString());
         }
 
-        for (Object[]  office: objectDAO.hqlRequest()){
+        for (Office  office: objectDAO.hqlRequest()){
             System.out.println(office.toString());
         }
     }
